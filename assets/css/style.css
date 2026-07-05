@@ -1151,3 +1151,62 @@ a {
         font-weight: 500;
     }
 }
+/* Container Utama Peringkat Baru */
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Baris per Player berbentuk Kartu */
+.leaderboard-row {
+    background: rgba(22, 22, 28, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    transition: all 0.25s ease;
+}
+
+/* Mengatur Nama & Rank Player */
+.row-main-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 180px;
+}
+
+/* Mengatur Grid Gamemode di Samping Nama */
+.player-tiers-grid {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+/* Kotak Kecil per Gamemode */
+.tier-cell {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex: 1;
+    min-width: 0;
+}
+
+.tier-cell img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
