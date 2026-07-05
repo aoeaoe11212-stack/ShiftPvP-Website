@@ -1043,3 +1043,200 @@ a {
     .card { padding: 24px; }
     .btn { width: 100%; padding: 14px 20px; }
 }
+/* ==========================================================================
+   REBUILT LEADERBOARD COMPONENT (FLEX-GRID BASED)
+   ========================================================================== */
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.leaderboard-row {
+    background: rgba(22, 22, 28, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.leaderboard-row:hover {
+    transform: translateX(4px) scale(1.005);
+    background: rgba(30, 30, 38, 0.85);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Layout inside row */
+.row-main-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 220px;
+}
+
+.player-rank {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    width: 35px;
+}
+
+.player-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--color-text-primary);
+    letter-spacing: 0.2px;
+}
+
+/* Gamemode Tier Badges Cell Grid */
+.player-tiers-grid {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.tier-cell {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.tier-cell img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.tier-cell span:not(.badge) {
+    display: block; /* Tampil di desktop, sembunyi di HP via media query */
+    color: var(--color-text-secondary);
+}
+
+.tier-cell.unranked {
+    opacity: 0.3;
+}
+
+.player-points {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+    text-align: right;
+    min-width: 80px;
+}
+
+.pts-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   TOP 3 PODIUM SPECIAL VISUAL EFFECTS
+   ========================================================================== */
+/* Rank 1: Gold */
+.podium-gold {
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.08) 0%, rgba(22, 22, 28, 0.6) 100%);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+.podium-gold .player-rank {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+.podium-gold .player-name {
+    color: #ffd700;
+}
+
+/* Rank 2: Silver */
+.podium-silver {
+    background: linear-gradient(90deg, rgba(192, 192, 192, 0.06) 0%, rgba(22, 22, 28, 0.6) 100%);
+    border-color: rgba(192, 192, 192, 0.25);
+}
+.podium-silver .player-rank {
+    color: #e0e0e0;
+    text-shadow: 0 0 10px rgba(224, 224, 224, 0.4);
+}
+.podium-silver .player-name {
+    color: #e0e0e0;
+}
+
+/* Rank 3: Bronze */
+.podium-bronze {
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.05) 0%, rgba(22, 22, 28, 0.6) 100%);
+    border-color: rgba(205, 127, 50, 0.2);
+}
+.podium-bronze .player-rank {
+    color: #cd7f32;
+    text-shadow: 0 0 10px rgba(205, 127, 50, 0.3);
+}
+.podium-bronze .player-name {
+    color: #cd7f32;
+}
+
+
+/* ==========================================================================
+   COMPACT MOBILE OPTIMIZATION (NO SIDE SCROLLING)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .leaderboard-row {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .row-main-info {
+        justify-content: space-between;
+        min-width: 100%;
+    }
+
+    .player-points {
+        text-align: left;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 10px;
+        margin-top: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .player-points::before {
+        content: "Total Score:";
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+    }
+
+    .player-tiers-grid {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+    }
+
+    .tier-cell {
+        padding: 4px 8px;
+    }
+
+    /* Sembunyikan teks nama gamemode panjang di mobile untuk menghemat ruang */
+    .tier-cell span:not(.badge) {
+        display: none;
+    }
+}
