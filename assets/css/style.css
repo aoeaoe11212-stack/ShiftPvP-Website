@@ -1210,3 +1210,45 @@ a {
     height: 16px;
     object-fit: contain;
 }
+/* ==========================================================================
+   EFEK VISUAL KHUSUS PODIUM TOP 3 (MINIMALIS & ELEGAN)
+   ========================================================================== */
+/* Peringkat 1: Emas (Gold) */
+.podium-gold {
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.08) 0%, rgba(22, 22, 28, 0.6) 100%) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
+}
+.podium-gold .player-rank {
+    color: #ffd700 !important;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+.podium-gold .player-name {
+    color: #ffd700 !important;
+}
+
+/* Peringkat 2: Perak (Silver) */
+.podium-silver {
+    background: linear-gradient(90deg, rgba(192, 192, 192, 0.06) 0%, rgba(22, 22, 28, 0.6) 100%) !important;
+    border-color: rgba(192, 192, 192, 0.25) !important;
+}
+.podium-silver .player-rank {
+    color: #e0e0e0 !important;
+    text-shadow: 0 0 12px rgba(224, 224, 224, 0.5);
+}
+.podium-silver .player-name {
+    color: #e0e0e0 !important;
+}
+
+/* Peringkat 3: Perunggu (Bronze) */
+.podium-bronze {
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.05) 0%, rgba(22, 22, 28, 0.6) 100%) !important;
+    border-color: rgba(205, 127, 50, 0.2) !important;
+}
+.podium-bronze .player-rank {
+    color: #cd7f32 !important;
+    text-shadow: 0 0 12px rgba(205, 127, 50, 0.4);
+}
+.podium-bronze .player-name {
+    color: #cd7f32 !important;
+}
