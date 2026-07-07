@@ -17,7 +17,7 @@ async function loadLeaderboard() {
         // Mengambil data players.json. 
         // Jika players.json berada di root folder (luar), gunakan '../players.json' atau '/players.json'
         // Jika ditaruh sejajar dengan index.html, gunakan 'players.json'
-        const response = await fetch('players.json');
+        const response = await fetch('data/players.json');
         
         if (!response.ok) {
             throw new Error(`Gagal memuat file JSON (Status: ${response.status})`);
