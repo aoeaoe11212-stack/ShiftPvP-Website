@@ -58,6 +58,7 @@
         </div>
     </section>
 
+    <!-- Leaderboard Section -->
     <section class="section leaderboard-section" id="rankings">
         <div class="container">
             <div class="section-header scroll-reveal">
@@ -65,348 +66,34 @@
                 <div class="title-bar"></div>
             </div>
 
-            <div class="leaderboard-container scroll-reveal">
-                
-               <div class="leaderboard-row podium-gold">
-                    <div class="row-main-info">
-                        <div class="player-rank">#1</div>
-                        <div class="player-name">Apacoba179010</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge tier-ht4">HT4</span></div>
-                        <div class="tier-cell"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge tier-ht5">HT5</span></div>
-                        <div class="tier-cell"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">37 <span class="pts-label">PTS</span></div>
-                </div>
+            <!-- Loader Transisi Visual -->
+            <div id="ranking-loader" style="text-align: center; color: #888; padding: 20px; font-family: 'Space Grotesk', sans-serif;">
+                <span style="display: inline-block; animation: pulse 1.5s infinite;">Loading Leaderboard Data...</span>
+            </div>
 
-                <div class="leaderboard-row podium-silver">
-                    <div class="row-main-info">
-                        <div class="player-rank">#2</div>
-                        <div class="player-name">itstoto_0</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge tier-ht4">HT4</span></div>
-                        <div class="tier-cell"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge tier-lt3">LT3</span></div>
-                        <div class="tier-cell"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">30 <span class="pts-label">PTS</span></div>
+            <div class="card leaderboard-card table-card scroll-reveal">
+                <div class="table-wrapper responsive-table">
+                    <table class="data-table tracking-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player Name</th>
+                                <th class="text-center"><img src="assets/icons/sword.png" alt="Sword" class="mode-icon"></th>
+                                <th class="text-center"><img src="assets/icons/nethpot.png" alt="NethPot" class="mode-icon"></th>
+                                <th class="text-center"><img src="assets/icons/crystal.png" alt="Crystal" class="mode-icon"></th>
+                                <th class="text-center"><img src="assets/icons/mace.png" alt="Mace" class="mode-icon"></th>
+                                <th class="text-center"><img src="assets/icons/uhc.png" alt="UHC" class="mode-icon"></th>
+                                <th class="text-center"><img src="assets/icons/smp.png" alt="SMP" class="mode-icon"></th>
+                                <th class="text-center"><img src="assets/icons/diasmp.png" alt="Diamond SMP" class="mode-icon"></th>
+                                <th class="text-right">Total Points</th>
+                            </tr>
+                        </thead>
+                        <!-- ID ditambahkan di sini agar dibaca oleh ranking.js -->
+                        <tbody id="leaderboard-rows-container">
+                            <!-- Data player akan disuntikkan secara dinamis oleh JavaScript -->
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="leaderboard-row podium-bronze">
-                    <div class="row-main-info">
-                        <div class="player-rank">#3</div>
-                        <div class="player-name">ItzRathMe</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge tier-lt3">LT3</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge tier-lt3">LT3</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">26 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#4</div>
-                        <div class="player-name">enderlots</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge tier-ht4">HT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge tier-lt5">LT5</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">16 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#5</div>
-                        <div class="player-name">KenjiiSigmaa</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge tier-ht5">HT5</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge tier-lt3">LT3</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">14 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#6</div>
-                        <div class="player-name">chieezzeey</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge tier-lt3">LT3</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">10 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#7</div>
-                        <div class="player-name">l3thragic</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge tier-ht5">HT5</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge tier-ht5">HT5</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">8 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#8</div>
-                        <div class="player-name">Aremdhym</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge tier-ht5">HT5</span></div>
-                        <div class="tier-cell"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge tier-lt5">LT5</span></div>
-                        <div class="tier-cell"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge tier-lt5">LT5</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge tier-ht5">HT5</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">8 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#9</div>
-                        <div class="player-name">yhumbled</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">6 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#10</div>
-                        <div class="player-name">Snuggy</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">6 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#11</div>
-                        <div class="player-name">AzkaRizky11</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge tier-lt4">LT4</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">6 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row">
-                    <div class="row-main-info">
-                        <div class="player-rank">#12</div>
-                        <div class="player-name">ItzMeReii</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge tier-lt5">LT5</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">6 <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row empty-slot">
-                    <div class="row-main-info">
-                        <div class="player-rank">#13</div>
-                        <div class="player-name">—</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">— <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row empty-slot">
-                    <div class="row-main-info">
-                        <div class="player-rank">#14</div>
-                        <div class="player-name">—</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">— <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row empty-slot">
-                    <div class="row-main-info">
-                        <div class="player-rank">#15</div>
-                        <div class="player-name">—</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">— <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row empty-slot">
-                    <div class="row-main-info">
-                        <div class="player-rank">#16</div>
-                        <div class="player-name">—</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">— <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row empty-slot">
-                    <div class="row-main-info">
-                        <div class="player-rank">#17</div>
-                        <div class="player-name">—</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">— <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row empty-slot">
-                    <div class="row-main-info">
-                        <div class="player-rank">#18</div>
-                        <div class="player-name">—</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">— <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row empty-slot">
-                    <div class="row-main-info">
-                        <div class="player-rank">#19</div>
-                        <div class="player-name">—</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">— <span class="pts-label">PTS</span></div>
-                </div>
-
-                <div class="leaderboard-row empty-slot">
-                    <div class="row-main-info">
-                        <div class="player-rank">#20</div>
-                        <div class="player-name">—</div>
-                    </div>
-                    <div class="player-tiers-grid">
-                        <div class="tier-cell unranked"><img src="assets/icons/sword.png" alt="Sword"><span>Sword</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/nethpot.png" alt="NethPot"><span>NethPot</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/crystal.png" alt="Crystal"><span>Crystal</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/mace.png" alt="Mace"><span>Mace</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/uhc.png" alt="UHC"><span>UHC</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/smp.png" alt="SMP"><span>SMP</span><span class="badge">—</span></div>
-                        <div class="tier-cell unranked"><img src="assets/icons/diasmp.png" alt="DiaSMP"><span>DiaSMP</span><span class="badge">—</span></div>
-                    </div>
-                    <div class="player-points">— <span class="pts-label">PTS</span></div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -546,9 +233,11 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
+    <!-- CORE SCRIPTS - Disusun berurutan sesuai dependensi sistem data -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/loader.js"></script>
+    <script src="assets/js/players.js"></script>
+    <script src="assets/js/ranking.js"></script>
 
 </body>
 </html>
-
-
