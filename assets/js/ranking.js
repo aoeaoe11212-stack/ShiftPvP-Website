@@ -1,83 +1,101 @@
-// js/ranking.js
+// 1. Matriks Referensi Poin Berdasarkan Tier
+const TIER_POINTS = {
+    "HT1": 20, "LT1": 18,
+    "HT2": 16, "LT2": 14,
+    "HT3": 12, "LT3": 10,
+    "HT4": 8,  "LT4": 6,
+    "HT5": 4,  "LT5": 2,
+    "—": 0, "unranked": 0
+};
 
-document.addEventListener("DOMContentLoaded", async () => {
-    const tableBody = document.getElementById("leaderboard-body");
-    const searchInput = document.getElementById("player-search"); // Opsional: jika ada input search
-
-    // Pastikan tableBody ada di halaman sebelum mengeksekusi
-    if (!tableBody) return;
+// 2. Fungsi Utama untuk Memuat dan Memproses Data Leaderboard
+async function loadLeaderboard() {
+    const container = document.getElementById('leaderboard-rows-container');
+    const loader = document.getElementById('ranking-loader');
 
     try {
-        // Tampilkan loader via LoaderManager jika ada
-        if (window.LoaderManager) window.LoaderManager.show();
-
-        // Ambil data menggunakan fungsi dari players.js
-        const players = await window.PlayerManager.fetchLeaderboard();
+        // Mengambil data players.json. 
+        // Jika players.json berada di root folder (luar), gunakan '../players.json' atau '/players.json'
+        // Jika ditaruh sejajar dengan index.html, gunakan 'players.json'
+        const response = await fetch('players.json');
         
-        // Render data ke tabel
-        renderTable(players);
-
-    } catch (error) {
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="4" style="text-align: center; color: #ff4a4a; padding: 20px;">
-                    ❌ Gagal memuat data ranking. Silakan coba lagi nanti.
-                </td>
-            </tr>
-        `;
-    } finally {
-        // Matikan loader setelah data selesai diproses/gagal
-        if (window.LoaderManager) window.LoaderManager.hide();
-    }
-
-    /**
-     * Fungsi untuk me-render array player ke dalam HTML tabel
-     * @param {Array} playerList 
-     */
-    function renderTable(playerList) {
-        tableBody.innerHTML = ""; // Kosongkan placeholder/loading text
-
-        if (playerList.length === 0) {
-            tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 20px;">Tidak ada data player ditemukan.</td></tr>`;
-            return;
+        if (!response.ok) {
+            throw new Error(`Gagal memuat file JSON (Status: ${response.status})`);
         }
 
-        playerList.forEach(player => {
-            const row = document.createElement("tr");
+        const players = await response.json();
 
-            // Berikan class aesthetic/khusus untuk peringkat Top 3
-            let rankBadge = `#${player.rank}`;
-            let rankClass = "rank-normal";
-            
-            if (player.rank === 1) {
-                rankClass = "rank-gold";
-                rankBadge = "🥇 1";
-            } else if (player.rank === 2) {
-                rankClass = "rank-silver";
-                rankBadge = "🥈 2";
-            } else if (player.rank === 3) {
-                rankClass = "rank-bronze";
-                rankBadge = "🥉 3";
+        // 3. Kalkulasi Total Poin untuk Setiap Player
+        const processedPlayers = players.map(player => {
+            let totalPoints = 0;
+            // Menghitung jumlah poin dari seluruh gamemode yang ada di objek tiers
+            for (const mode in player.tiers) {
+                const tier = player.tiers[mode] ? player.tiers[mode].trim() : "—";
+                totalPoints += TIER_POINTS[tier] || 0;
             }
+            return {
+                ...player,
+                totalPoints: totalPoints
+            };
+        });
 
-            row.innerHTML = `
-                <td class="rank-col ${rankClass}">${rankBadge}</td>
-                <td class="player-col">
-                    <span class="player-name">${player.username}</span>
-                </td>
-                <td>${player.kills !== undefined ? player.kills : 0}</td>
-                <td><span class="points-badge">${player.points !== undefined ? player.points : 0}</span></td>
+        // 4. Urutkan Player Berdasarkan Total Points Tertinggi (Sorting Otomatis)
+        processedPlayers.sort((a, b) => b.totalPoints - a.totalPoints);
+
+        // 5. Render HTML Baris Tabel secara Dinamis
+        let htmlContent = '';
+        processedPlayers.forEach((player, index) => {
+            const rank = index + 1;
+            
+            // Tambahkan class khusus atau style pembeda untuk Top 3 besar
+            let rankDisplay = rank;
+            if (rank === 1) rankDisplay = `<span style="color: #ffd700; font-weight: 800;">#1</span>`;
+            else if (rank === 2) rankDisplay = `<span style="color: #c0c0c0; font-weight: 700;">#2</span>`;
+            else if (rank === 3) rankDisplay = `<span style="color: #cd7f32; font-weight: 700;">#3</span>`;
+            else rankDisplay = `#${rank}`;
+
+            htmlContent += `
+                <tr>
+                    <td class="font-weight-bold">${rankDisplay}</td>
+                    <td class="font-weight-bold color-white">${player.username}</td>
+                    <td class="text-center">${renderBadge(player.tiers.sword)}</td>
+                    <td class="text-center">${renderBadge(player.tiers.nethpot)}</td>
+                    <td class="text-center">${renderBadge(player.tiers.crystal)}</td>
+                    <td class="text-center">${renderBadge(player.tiers.mace)}</td>
+                    <td class="text-center">${renderBadge(player.tiers.uhc)}</td>
+                    <td class="text-center">${renderBadge(player.tiers.smp)}</td>
+                    <td class="text-center">${renderBadge(player.tiers.diasmp)}</td>
+                    <td class="text-right font-weight-bold color-accent">${player.totalPoints}</td>
+                </tr>
             `;
-            tableBody.appendChild(row);
         });
-    }
 
-    // Listener Opsional: Jika kamu ingin memasang fitur real-time search di website kamu
-    if (searchInput) {
-        searchInput.addEventListener("input", (e) => {
-            const query = e.target.value;
-            const filteredPlayers = window.PlayerManager.searchPlayer(query);
-            renderTable(filteredPlayers);
-        });
+        // Masukkan baris data ke dalam tabel
+        if (container) {
+            container.innerHTML = htmlContent;
+        }
+
+        // Sembunyikan elemen loader setelah data sukses ditampilkan
+        if (loader) {
+            loader.style.display = 'none';
+        }
+
+    } catch (error) {
+        console.error("Error pada sistem ranking:", error);
+        if (loader) {
+            loader.innerHTML = `<span style="color: #ff4a4a;">Gagal memuat data leaderboard. Periksa konsol browser.</span>`;
+        }
     }
-});
+}
+
+// Helper untuk membuat elemen badge tier agar rapi dan memiliki class CSS yang sesuai
+function renderBadge(tierName) {
+    if (!tierName || tierName === "—") {
+        return `<span class="color-dim">—</span>`;
+    }
+    const cleanTier = tierName.trim().toLowerCase();
+    return `<span class="badge tier-${cleanTier}">${tierName}</span>`;
+}
+
+// Jalankan fungsi setelah seluruh dokumen HTML selesai di-load browser
+document.addEventListener('DOMContentLoaded', loadLeaderboard);
