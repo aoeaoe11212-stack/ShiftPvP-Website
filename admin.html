@@ -262,6 +262,7 @@
             <span class="pill" id="playerCountPill">0 player</span>
             <div class="row">
                 <button class="btn btn-secondary" id="btnReload">Reload dari GitHub</button>
+                <button class="btn btn-secondary" id="btnDownload">⬇️ Download players.json</button>
                 <button class="btn btn-primary" id="btnCommit">💾 Save &amp; Commit ke GitHub</button>
             </div>
         </div>
@@ -291,7 +292,8 @@
             </div>
             <div class="empty-hint">
                 Tombol di atas cuma mengubah data di memori browser. Perubahan baru benar-benar
-                tersimpan setelah kamu klik <strong>"Save &amp; Commit ke GitHub"</strong> di atas.
+                tersimpan setelah kamu klik <strong>"Save &amp; Commit ke GitHub"</strong>, atau
+                <strong>"Download players.json"</strong> lalu upload manual (lihat card di bawah).
             </div>
         </div>
     </div>
@@ -299,6 +301,19 @@
     <div class="card">
         <h2>Log Aktivitas</h2>
         <div class="log-box" id="logBox">Menunggu aktivitas...</div>
+    </div>
+
+    <div class="card">
+        <h2>Cara Upload Manual (kalau tombol Commit gagal / 403)</h2>
+        <div class="empty-hint" style="text-align:left;">
+            1. Klik <strong>"⬇️ Download players.json"</strong> di atas &mdash; file ter-download ke komputer.<br>
+            2. Buka repo GitHub kamu, masuk ke folder <code>data</code>, klik file <code>players.json</code>.<br>
+            3. Klik ikon pensil (Edit this file).<br>
+            4. Select all isinya (Ctrl+A) lalu hapus.<br>
+            5. Buka file <code>players.json</code> yang baru di-download tadi pakai Notepad/text editor, copy semua isinya.<br>
+            6. Paste ke GitHub, scroll ke bawah, klik <strong>"Commit changes"</strong>.<br>
+            7. Vercel otomatis deploy ulang dalam 1&ndash;2 menit.
+        </div>
     </div>
 </div>
 
@@ -608,6 +623,21 @@
         }
     }
 
+    function handleDownload() {
+        const jsonString = JSON.stringify(players, null, 2);
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'players.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        log(`Downloaded players.json (${players.length} players) ke komputer.`);
+        setStatus('players.json ter-download. Upload manual ke GitHub via web (lihat instruksi di bawah tombol).', 'success');
+    }
+
     function handleForgetToken() {
         sessionStorage.removeItem(TOKEN_KEY);
         el('ghToken').value = '';
@@ -631,6 +661,7 @@
         el('btnClearForm').addEventListener('click', clearForm);
         el('btnDeletePlayer').addEventListener('click', handleDeletePlayer);
         el('btnCommit').addEventListener('click', handleCommit);
+        el('btnDownload').addEventListener('click', handleDownload);
         el('btnReload').addEventListener('click', handleReload);
         el('searchBox').addEventListener('input', renderPlayerList);
     }
